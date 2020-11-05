@@ -1,0 +1,49 @@
+.titular i {
+    font-size: 0.5em;
+}
+
+.address p {
+    margin: 0;
+}
+
+.morado {
+    color: #5D3BBF;
+}
+
+.headerModal {
+    padding: 10px;
+    margin-top: 20vh;
+    color: white;
+}
+
+.formulario {
+    padding: 20px;
+}
+
+.imin h1 {
+    color: white;
+    font-size: 2em;
+}
+
+.tablas h1 {
+    padding: 0 20px;
+    font-size: 1.3em;
+}
+
+.inscritos {
+    height: calc(100vh - 80px);
+    overflow: auto;
+}
+
+.password {
+    padding-top: 30vh;
+}
+
+.caja {
+    padding: 20px;
+    background-color: white;
+}
+
+.volver {
+    margin-right: 10px;
+}

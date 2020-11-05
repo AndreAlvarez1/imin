@@ -1,0 +1,63 @@
+.home {
+    background-color: #5D3BBF;
+    height: 100vh;
+}
+
+.logo {
+    padding-top: 40vh;
+    width: 50%;
+}
+
+.info {
+    position: absolute;
+    bottom: 10px;
+}
+
+.info p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: -10px 0 0 0;
+}
+
+.modalLogin {
+    background-color: rgba(38, 38, 38, 0.8);
+    position: fixed;
+    top: 0;
+    z-index: 1040;
+    height: 110vh;
+    width: 100%;
+}
+
+.login {
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 50px;
+}
+
+.titulo {
+    padding: 20px;
+}
+
+.titulo h1 {
+    font-size: 1.5em;
+}
+
+.login p {
+    font-size: 1;
+    margin: 0
+}
+
+.login p:hover {
+    color: #067BC2;
+}
+
+@media (min-width: 800px) {
+    .logo {
+        padding-top: 30vh;
+        width: 50%;
+    }
+    .botones {
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 1199.98px) {}

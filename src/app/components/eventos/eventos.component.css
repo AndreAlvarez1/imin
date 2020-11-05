@@ -1,0 +1,50 @@
+.eventos {
+    padding-bottom: 90px;
+}
+
+.evento {
+    background-color: #9742FF;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.evento h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2em;
+    margin: 0;
+    font-weight: 500;
+}
+
+.evento h2 {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.evento p {
+    margin: 0;
+}
+
+.newEvent {
+    background-color: #02C194;
+    color: white;
+}
+
+.newEvent p {
+    padding-top: 10px;
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+@media (min-width: 800px) {
+    .evento {
+        border-radius: 20px;
+        color: white;
+        padding: 10px;
+        margin-top: 10px;
+        border: 10px solid white;
+    }
+}

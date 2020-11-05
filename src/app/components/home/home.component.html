@@ -1,0 +1,61 @@
+<div class="row fondoMorado">
+    <div class="col-12 ">
+
+        <div class="row">
+            <div class="col-12 col-md-4 offset-md-4 text-center">
+                <img src="./assets/images/logo_blanco.svg" class="logo animated bounceIn">
+            </div>
+        </div>
+
+        <div class="row botones animated fadeIn">
+            <div class="col-6 offset-3 col-md-4 offset-md-4 text-center">
+                <button class="btn btn-outline-light btn-block" routerLink="/eventos">Matches</button>
+                <button class="btn btn-outline-warning btn-block" (click)="modalLogin = true">Admin</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 info text-center animated fadeIn">
+                <p>All rights reserved © IMIN 2020</p>
+                <p class="pointer" (click)="autores()">Designed and Developped by M&M</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="modalLogin" class="row modalLogin animated fadeIn" style="margin:0">
+    <div class="col-10 offset-1 col-md-4 offset-md-4 login animated slideInUp">
+
+        <form (ngSubmit)="validarUsuario(form)" #form="ngForm" class="row validate-form ">
+            <div class="col-12 text-right">
+                <i class="fas fa-times fa-1x pointer" style="padding:10px 10px 0 0" (click)="modalLogin = false"></i>
+            </div>
+
+            <div class="col-12 text-center titulo">
+                <h1>Login</h1>
+            </div>
+
+            <div class="col-12 col-md-8 offset-md-2 campo">
+                <span *ngIf="form.submitted && form.controls['email'].errors" class="error">Debes ingresar un correo por favor</span>
+                <input class="form-control " type="text" name="email" required email [(ngModel)]="usuario.email" placeholder="Email">
+            </div>
+
+            <div class="col-12 col-md-8 offset-md-2 campo" data-validate="Password is required">
+                <span *ngIf="form.submitted && form.controls['password'].errors" class="error">Debes ingresar un password por favor</span>
+                <input class="form-control" type="password" name="password" required minlength="6" [(ngModel)]="usuario.password" placeholder="Password">
+            </div>
+
+            <div class="col-12 col-md-8 offset-md-2 ">
+                <button class="btn btn-primary btn-block" style="margin-bottom:10px" type="submit">
+                Loguearse
+            </button>
+            </div>
+
+            <div class="col-12 text-center">
+                <p routerLink="/registro" class="pointer">¿No tienes cuenta?</p>
+                <p routerLink="/reset" class="pointer">¿Olvidaste tu constraseña?</p>
+            </div>
+        </form>
+    </div>
+</div>

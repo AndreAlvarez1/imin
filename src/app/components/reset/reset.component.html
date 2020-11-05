@@ -1,0 +1,22 @@
+<div class="row fondoMorado">
+    <div class="col-12 animated slideInLeft">
+
+        <form (ngSubmit)="enviarMail(form)" #form="ngForm" class="validate-form row mt-3">
+
+            <div class="col-12 text-center titulo text-light">
+                <h1>Resetear Contraseña</h1>
+            </div>
+
+            <div class="col-10 offset-1 campo" style="padding-left:0;padding-right: 0;">
+                <span *ngIf="form.submitted && form.controls['email'].errors" class="error">Debes ingresar un correo por favor</span>
+                <input class="form-control" type="text" name="email" required email [(ngModel)]="usuario.email" placeholder="Email">
+            </div>
+
+            <div class="col-10 offset-1 text-center">
+                <button class="btn btn-outline-light btn-block" type="submit">Enviar Mail</button>
+                <p routerLink="/home" class="text-light pointer mt-1">Volver</p>
+            </div>
+
+        </form>
+    </div>
+</div>

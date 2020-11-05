@@ -1,0 +1,135 @@
+<app-loading *ngIf="loading"></app-loading>
+
+
+<form *ngIf="!loading" (ngSubmit)="guardar(f)" #f="ngForm" class="validate-form row formulario animated slideInRight">
+    <div class="col-10 offset-1 col-md-12 offset-md-0">
+
+        <div class="row marginNavbar">
+            <div class="col-12 text-center titular">
+                <h1 (click)="info()">{{titulo}}
+                    <i *ngIf="evento.status === 1" (click)="evento.status = 0" class="fas fa-toggle-on text-success pointer animated fadeIn"></i>
+                    <i *ngIf="evento.status === 0" (click)="evento.status = 1" class="fas fa-toggle-off text-danger pointer animated fadeIn"></i>
+                </h1>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-12  col-md-4 offset-md-4 campo">
+                <span *ngIf="f.submitted && f.controls['nombre'].errors" class="error">You must enter a name to the event</span>
+                <input class="form-control" type="text" name="nombre" required [(ngModel)]="evento.nombre" placeholder="Event Name">
+            </div>
+
+            <!-- <div class="col-3 col-md-4">
+                <h1 *ngIf="evento.status === 1" (click)="evento.status = 0"><i class="fas fa-toggle-on text-success pointer animated fadeIn"></i></h1>
+                <h1 *ngIf="evento.status === 0" (click)="evento.status = 1"><i class="fas fa-toggle-off text-danger pointer animated fadeIn"></i></h1>
+            </div> -->
+
+            <div class="col-12 col-md-4 offset-md-4 campo">
+                <textarea class="form-control" rows="4" type="text" name="detalle" [(ngModel)]="evento.detalle" placeholder="¿Any more info, like bring some beers?"></textarea>
+            </div>
+
+            <div class="col-12  col-md-4 offset-md-4 campo">
+                <span *ngIf="f.submitted && f.controls['place'].errors" class="error">You must enter a name to the event</span>
+                <input class="form-control" type="text" name="place" required [(ngModel)]="evento.address.lugar" placeholder="Name of the place like: Vicky's Home">
+            </div>
+
+            <div class="col-12  col-md-4 offset-md-4 campo">
+                <span *ngIf="f.submitted && f.controls['direccion'].errors" class="error">You must enter a name to the event</span>
+                <input class="form-control" type="text" name="direccion" required [(ngModel)]="evento.address.direccion" placeholder="8 mile st">
+            </div>
+
+            <div class="col-6  col-md-4 offset-md-4 campo">
+                <label>Event Date</label>
+                <span *ngIf="f.submitted && f.controls['fechaE'].errors" class="error">You must enter a name to the event</span>
+                <input class="form-control" type="date" name="fechaE" required [(ngModel)]="evento.fechas.fechaEvento">
+            </div>
+            <div class="col-6  col-md-4 offset-md-4 campo">
+                <label>Time</label>
+                <span *ngIf="f.submitted && f.controls['hora'].errors" class="error">You must enter a name to the event</span>
+                <input class="form-control" type="time" name="hora" required [(ngModel)]="evento.fechas.hora">
+            </div>
+
+            <div *ngIf="evento.fechas.corte === true" class="col-6  col-md-4 offset-md-4 campo">
+                <label>Open Inscriptions</label>
+                <input class="form-control" type="date" name="fechaIni" required [(ngModel)]="evento.fechas.fechaIni">
+            </div>
+            <div *ngIf="evento.fechas.corte === true" class="col-6  col-md-4 offset-md-4 campo">
+                <label>Close Inscriptions</label>
+                <input class="form-control" type="date" name="fechaFin" required [(ngModel)]="evento.fechas.fechaFin">
+            </div>
+
+            <hr>
+
+            <div class="col-12 col-md-4 offset-md-4 form-group animated fadeIn">
+                <label for="Tipo">Tipo de inscription</label>
+                <select class="form-control" required name="Tipo" [(ngModel)]="evento.config.tipo" [ngModelOptions]="{standalone: true}" (change)="selectTipo($event.target.value)">
+                  <option>Limited</option>
+                  <option>Infinite</option>
+                  <!-- <option *ngFor="let inmueble of inmuebles" [(ngValue)]="inmueble.CODIGO" >{{inmueble.INAME | titlecase}}</option> -->
+              </select>
+            </div>
+
+
+            <div *ngIf="evento.config.tipo === 'Limited' " class="col-12  col-md-4 offset-md-4 campo">
+                <label for="cupos">Cupos</label>
+                <span *ngIf="f.submitted && f.controls['cupos'].errors" class="error">How many inscriptions?</span>
+                <input class="form-control" type="number" name="cupos" required [(ngModel)]="evento.config.cupos" (change)="refreshCupos()" placeholder="Event Name">
+            </div>
+
+            <div class="col-12 col-md-4 offset-md-4 form-group animated fadeIn">
+                <label for="diferenciado">Diferenciado</label>
+                <select class="form-control" required name="diferenciado" [(ngModel)]="evento.config.diferenciado" [ngModelOptions]="{standalone: true}" (change)="selectGenero($event.target.value)">
+                  <option value="false">Mixto</option>
+                  <option value="true" >Separado por Genero</option>
+                  <!-- <option *ngFor="let inmueble of inmuebles" [(ngValue)]="inmueble.CODIGO" >{{inmueble.INAME | titlecase}}</option> -->
+              </select>
+            </div>
+
+            <div *ngIf="evento.config.diferenciado === true && evento.config.tipo === 'Limited'" (change)="calcularCupos()" class="col-12  col-md-4 offset-md-4 campo">
+                <label for="wQuota">Women Quota</label>
+                <input class="form-control" type="number" name="wQuota" required [(ngModel)]="evento.config.mujeres" placeholder="Quota for womens">
+            </div>
+
+            <div *ngIf="evento.config.diferenciado === true && evento.config.tipo === 'Limited'" class="col-12  col-md-4 offset-md-4 campo">
+                <label for="mQuota">Men Quota</label>
+                <input class="form-control" type="number" name="mQuota" required disabled [(ngModel)]="evento.config.hombres" placeholder="Quota for Mens">
+            </div>
+
+            <div *ngIf="evento.config.tipo === 'Limited' " class="col-6 col-md-4 offset-md-4 form-group animated fadeIn">
+                <label for="espera">Lista de espera</label>
+                <select class="form-control" name="espera" [(ngModel)]="evento.config.listaEspera" [ngModelOptions]="{standalone: true}" (change)="selectEspera($event.target.value)">
+                  <option value="true">Con lista de espera</option>
+                  <option value="false">Sin Lista de espera</option>
+              </select>
+            </div>
+
+            <div class="col-6 col-md-4 offset-md-4 form-group animated fadeIn">
+                <label for="npass">Password</label>
+                <select class="form-control" name="npass" [(ngModel)]="evento.config.needPass" [ngModelOptions]="{standalone: true}" (change)="selectPass($event.target.value)">
+                  <option value="true">Protect</option>
+                  <option value="false">Sin Pass</option>
+             </select>
+            </div>
+
+            <!-- selectPass($event.target.value) -->
+
+            <div *ngIf="evento.config.needPass === true " class="col-12 col-md-4 offset-md-4 campo animated flipInX">
+                <label for="password">Ingresa un Password</label>
+                <span *ngIf="f.submitted && f.controls['password'].errors" class="error">You must enter a password</span>
+                <input class="form-control" type="text" name="password" required min-lenght="4" [(ngModel)]="evento.config.password" placeholder="Ingresa un password">
+            </div>
+
+
+            <div class="col-12 col-md-4 offset-md-4 campo">
+                <button class="btn btn-primary btn-block" type="submit">Save</button>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+
+</form>

@@ -1,1 +1,93 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+/* @import '~ngx-sharebuttons/themes/default/default-theme'; */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500&family=Staatliches&display=swap');
+* {
+    font-family: 'Rajdhani', sans-serif;
+}
+
+h1 {
+    font-family: 'Staatliches', cursive;
+    font-size: 2em;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.fondoMorado {
+    background-color: #5D3BBF;
+    height: 100vh;
+}
+
+.f_white {
+    background-color: white;
+}
+
+.f_morado {
+    background-color: #5D3BBF;
+}
+
+.f_celeste {
+    background-color: #007bff;
+}
+
+.f_rosado {
+    background-color: #F3507D;
+}
+
+.f_rosado2 {
+    background-color: #F77498;
+}
+
+.f_cyan2 {
+    background-color: #5ec1e8;
+}
+
+.fondoModif {
+    background-color: rgba(38, 38, 38, 0.8);
+    position: fixed;
+    top: 0;
+    z-index: 1040;
+    height: 110vh;
+    width: 100%;
+    /* align-items: center; */
+}
+
+.fondoClave {
+    background-color: rgba(0, 123, 255, 0.9);
+    position: fixed;
+    top: 0;
+    z-index: 1040;
+    height: 110vh;
+    width: 100%;
+    /* align-items: center; */
+}
+
+.titulo {
+    padding: 20px;
+}
+
+.titulo h1 {
+    font-size: 1.5em;
+}
+
+.campo {
+    margin-bottom: 20px;
+}
+
+.marginNavbar {
+    margin-top: 80px;
+}
+
+
+/* Medium devices (tablets, less than 992px) */
+
+@media (min-width: 800px) {}
+
+
+/* Large devices (desktops, less than 1200px) */
+
+@media (min-width: 1199.98px) {}

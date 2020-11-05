@@ -1,0 +1,34 @@
+<div class="row marginNavbar" style="margin:0">
+    <div *ngIf="!loading" class="col-12">
+
+        <div class="row animated fadeIn marginNavbar">
+            <div class="col-12 text-center">
+                <h1 (click)="info()">Mis Eventos</h1>
+            </div>
+        </div>
+
+        <div class="row eventos">
+
+            <div *ngFor="let e of eventos" (click)="selectEvento(e)" class="col-10 offset-1 col-md-4 offset-md-0 evento pointer animated flipInX">
+                <div class="row">
+                    <div class="col-10">
+                        <h1>{{e.nombre}}</h1>
+                    </div>
+                    <div class="col-2">
+                        <h2 *ngIf="e.status === 1"><i class="fas fa-circle text-success"></i></h2>
+                        <h2 *ngIf="e.status !== 1"><i class="fas fa-circle text-danger"></i></h2>
+                    </div>
+                </div>
+                <p>{{e.fechas.fechaEvento | date}} | {{e.fechas.hora}}</p>
+                <p>{{e.inscritos.length}} / {{e.config.cupos}}</p>
+                <p>{{e.fechas.Hora}}</p>
+            </div>
+            <!-- Fin Evento -->
+
+        </div>
+    </div>
+
+
+    <nav *ngIf="admin" class="navbar fixed-bottom newEvent text-center animated fadeIn pointer" style="display:inline">
+        <p routerLink="/config/nuevo"><i class="far fa-calendar-plus"></i> Crear Evento</p>
+    </nav>

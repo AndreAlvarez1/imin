@@ -1,0 +1,34 @@
+<div class="row fondoMorado">
+    <div class="col-12">
+
+        <form (ngSubmit)="guardarUsuario(f)" #f="ngForm" class="validate-form row formulario animated slideInRight">
+
+            <div class="col-12 text-center titulo text-light">
+                <h1>Registro</h1>
+            </div>
+            <div class="col-10 offset-1 col-md-4 offset-md-4 campo">
+                <span *ngIf="f.submitted && f.controls['email'].errors" class="error">Debes ingresar un correo por favor</span>
+                <input class="form-control" type="text" name="email" required email [(ngModel)]="usuario.email" placeholder="Email">
+            </div>
+
+            <div class="col-10 offset-1 col-md-4 offset-md-4 campo">
+                <span *ngIf="f.submitted && f.controls['name'].errors" class="error">Debes ingresar un nombre por favor</span>
+                <input class="form-control" type="text" name="name" required minlength="3" [(ngModel)]="usuario.name" placeholder="Nombre">
+            </div>
+
+            <div class="col-10 offset-1 col-md-4 offset-md-4 campo" data-validate="Password is required">
+                <span *ngIf="f.submitted && f.controls['password'].errors" class="error">Debes ingresar un password por favor</span>
+                <input class="form-control" type="password" name="password" required minlength="6" [(ngModel)]="usuario.password" placeholder="Password">
+            </div>
+
+            <div class="col-10 offset-1 col-md-4 offset-md-4 campo">
+                <button class="btn btn-primary btn-block" type="submit">Crear cuenta</button>
+            </div>
+
+            <div class="col-10 offset-1 col-md-4 offset-md-4 text-center">
+                <p routerLink="/home" class="text-light pointer"> ¿Ya tienes cuenta? / Ingresar</p>
+            </div>
+
+        </form>
+    </div>
+</div>
