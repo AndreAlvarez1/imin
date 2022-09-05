@@ -31,8 +31,10 @@
 }
 
 .inscritos {
+    padding-bottom: 60px;
     height: calc(100vh - 80px);
     overflow: auto;
+    border-bottom: 2px solid #5D3BBF;
 }
 
 .password {
@@ -42,6 +44,7 @@
 .caja {
     padding: 20px;
     background-color: white;
+    
 }
 
 .volver {
